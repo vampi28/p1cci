@@ -1,0 +1,21 @@
+name: Deployment Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: acctions/checkout@v2
+        with:
+          fech-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install dependences
+        run: npm Install
+      - name: Lint
+        run: npm install eslint
